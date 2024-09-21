@@ -2,6 +2,7 @@ package com.daviag.bookshop.catalog.web;
 
 import com.daviag.bookshop.catalog.domain.Book;
 import com.daviag.bookshop.catalog.domain.BookService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,13 +26,13 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book post(@RequestBody Book book) {
+    public Book post(@RequestBody @Valid Book book) {
         return bookService.addBookToCatalog(book);
     }
 
     @PutMapping("/{isbn}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Book put(@PathVariable String isbn, @RequestBody Book book) {
+    public Book put(@PathVariable String isbn, @RequestBody @Valid Book book) {
         return bookService.editBookDetails(isbn, book);
     }
 
