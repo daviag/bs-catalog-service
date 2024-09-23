@@ -1,6 +1,7 @@
 package com.daviag.bookshop.catalog.domain;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 
@@ -13,7 +14,7 @@ public record Book(
         String title,
         @NotBlank(message = "The book author must be defined.")
         String author,
-        @NotBlank(message = "The book price must be defined.")
+        @NotNull(message = "The book price must be defined.")
         @Positive(message = "The book price must be greater than zero.")
         Double price
 ) {
