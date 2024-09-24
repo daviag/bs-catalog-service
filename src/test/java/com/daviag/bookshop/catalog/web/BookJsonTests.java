@@ -21,8 +21,8 @@ public class BookJsonTests {
         var book = new Book(1L, "1234567890", "Title", "Author", 9.90,
                 "david", Instant.now(), "laura", Instant.now(), 1);
         var jsonContent = json.write(book);
-        assertThat(jsonContent).extractingJsonPathStringValue("@.id")
-                .isEqualTo(book.id());
+        assertThat(jsonContent).extractingJsonPathNumberValue("@.id")
+                .isEqualTo(book.id().intValue());
         assertThat(jsonContent).extractingJsonPathStringValue("@.isbn")
                 .isEqualTo(book.isbn());
         assertThat(jsonContent).extractingJsonPathStringValue("@.title")
@@ -31,17 +31,15 @@ public class BookJsonTests {
                 .isEqualTo(book.author());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
                 .isEqualTo(book.price());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
-                .isEqualTo(book.price());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.createdBy")
+        assertThat(jsonContent).extractingJsonPathStringValue("@.createdBy")
                 .isEqualTo(book.createdBy());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.createdDate")
-                .isEqualTo(book.createdDate());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.lastModifiedBy")
+        assertThat(jsonContent).extractingJsonPathStringValue("@.createdDate")
+                .isEqualTo(book.createdDate().toString());
+        assertThat(jsonContent).extractingJsonPathStringValue("@.lastModifiedBy")
                 .isEqualTo(book.lastModifiedBy());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.lastModifiedDate")
-                .isEqualTo(book.lastModifiedDate());
-        assertThat(jsonContent).extractingJsonPathStringValue("@.version")
+        assertThat(jsonContent).extractingJsonPathStringValue("@.lastModifiedDate")
+                .isEqualTo(book.lastModifiedDate().toString());
+        assertThat(jsonContent).extractingJsonPathNumberValue("@.version")
                 .isEqualTo(book.version());
     }
 
