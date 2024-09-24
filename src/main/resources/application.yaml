@@ -6,3 +6,6 @@
 #    threads:
 #      max: 50
 #      min-spare: 5
+
+bs:
+  greeting: Welcome to the local book catalog!
