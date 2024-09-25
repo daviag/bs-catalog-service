@@ -7,6 +7,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 @ConfigurationPropertiesScan
 public class BookCatalogServiceApplication {
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args) {
         SpringApplication.run(BookCatalogServiceApplication.class, args);
     }
