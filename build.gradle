@@ -71,6 +71,21 @@ bootRun {
 bootBuildImage {
     imageName = "${project.name}"
     environment = ["BP_JVM_VERSION" : "21.*"]
+
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername")
+            password = project.findProperty("registryToken")
+            url = project.findProperty("registryUrl")
+        }
+    }
 }
+
+//$ ./gradlew bootBuildImage \
+//    --imageName ghcr.io/<your_github_username>/catalog-service \
+//    --publishImage \
+//    -PregistryUrl=ghcr.io \
+//    -PregistryUsername=<your_github_username> \
+//    -PregistryToken=<your_github_token>
 
 
