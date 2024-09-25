@@ -68,4 +68,9 @@ bootRun {
 //    systemProperty 'spring.profiles.active', 'testdata,prod'
 }
 
+bootBuildImage {
+    imageName = "${project.name}"
+    environment = ["BP_JVM_VERSION" : "21.*"]
+}
+
 
