@@ -50,6 +50,8 @@ management:
     health:
       show-details: always
       show-components: always
+      probes:
+        enabled: true
 
 #bs:
 #  greeting: Welcome to the local book catalog!
