@@ -99,8 +99,6 @@ public class BookCatalogServiceApplicationTest {
         webTestClient
                 .post()
                 .uri("/books")
-                .headers(headers ->
-                        headers.setBearerAuth(bjornTokens.accessToken()))
                 .bodyValue(expectedBook)
                 .exchange()
                 .expectStatus().isUnauthorized()
