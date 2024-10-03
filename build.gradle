@@ -33,6 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly 'io.opentelemetry.javaagent:opentelemetry-javaagent:1.33.3'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     runtimeOnly 'org.postgresql:postgresql'
@@ -57,6 +58,7 @@ dependencies {
 ext {
     set('springCloudVersion', "2023.0.3")
     set('testcontainersVersion', "1.20.1")
+    set('otelVersion', "1.33.3")
 }
 
 dependencyManagement {
@@ -96,3 +98,7 @@ bootBuildImage {
 //    -PregistryUrl=ghcr.io \
 //    -PregistryUsername=<your_github_username> \
 //    -PregistryToken=<your_github_token>
+
+springBoot {
+    buildInfo()
+}
